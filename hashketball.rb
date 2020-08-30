@@ -126,4 +126,109 @@ def game_hash
   }
 end
 
+require 'pry'
+
+def num_points_scored(player)
+  game_hash.each do |key, value|
+    value[:players].each do |pla|
+      if pla[:player_name] == player 
+        return pla[:points]
+      end
+    end
+  end
+end
+
+def shoe_size(player)
+  game_hash.each do |key, value|
+    value[:players].each do |pla|
+      if pla[:player_name] == player 
+        return pla[:shoe]
+      end
+    end
+  end
+end
+
+def team_colors(team)
+  game_hash.each do |key, value|
+    if value[:team_name] == team
+        return value[:colors]
+    end
+  end
+end
+
+def team_names
+  game_hash.each_with_object([]) do |(key, value), final_array|
+    final_array << value[:team_name]
+  end
+end
+
+def player_numbers(team)
+  game_hash.each_with_object([]) do |(key, value), final_array|
+    if value[:team_name] == team 
+      value[:players].each do |pla|
+        final_array << pla[:number]
+      end
+    end
+  end
+end
+
+def player_stats(player)
+  game_hash.each do |key, value|
+    value[:players].each do |pla|
+      if pla[:player_name] == player 
+        return pla 
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds
+  big_shoe = 0
+  game_hash.each do |key, value|
+    value[:players].each do |pla|
+      if pla[:shoe] > big_shoe
+        big_shoe = pla[:shoe]
+      end
+    end  
+    value[:players].each do |pla|
+      if pla[:shoe] == big_shoe 
+        return pla[:rebounds]
+      end
+    end
+  end   
+end
+
+def most_points_scored
+  most = 0
+  game_hash.each do |key, value|
+    value[:players].each do |pla|
+      if pla[:points] > most
+        most = pla[:points]
+      end
+    end  
+    value[:players].each do |pla|
+      if pla[:points] == most 
+        return pla[:player_name]
+      end
+    end
+  end   
+end
+
+def winning_team
+  game_hash.each do |key, value|
+    team_score = 0 
+    value[:players].each do |pla|
+      team_score = team_score + pla[:points]
+    end
+  end
+end
+
+def player_with_longest_name
+  game_hash
+end
+
+def long_name_steals_a_ton?
+  game_hash
+end
+
 # Write code here
