@@ -198,6 +198,7 @@ def big_shoe_rebounds
   end   
 end
 
+<<<<<<< HEAD
 def most_points_scored
   most = 0
   game_hash.each do |key, value|
@@ -231,4 +232,6 @@ def long_name_steals_a_ton?
   game_hash
 end
 
+=======
+>>>>>>> 1d41d9c7b950662412c5b395e121edbb3233d5bf
 # Write code here
